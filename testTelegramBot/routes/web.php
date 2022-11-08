@@ -19,5 +19,5 @@ Route::get('/', function () {
         'chat_id'=>818093929,
         'text'=>"<b>Hello world</b>",
         'parse_mode'=>'html'
-    ])
+    ]);
 });

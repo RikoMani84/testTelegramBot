@@ -17,11 +17,11 @@ class Telegram
     }
 
     public function sendMessage($chat_id, $message){
-        \Illuminate\Support\Facades\Http::post(self::url.$this->bot."/sendMessage", [
+        $this->http::post( self::url.$this->bot.'/sendMessage', [
             'chat_id'=>$chat_id,
             'text'=>$message,
             'parse_mode'=>'html'
         ]);
     }
 }
-//
+
