@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    \Illuminate\Support\Facades\Http::post("https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendMessage", [
-        'chat_id'=>818093929,
-        'text'=>"<b>Hello world</b>",
-        'parse_mode'=>'html'
-    ]);
+Route::get('/', function (\App\Helpers\Telegram $telegram) {
+    $telegram->sendDocument(818093929, 'photo.png');
 });
