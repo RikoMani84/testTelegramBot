@@ -14,9 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (\App\Models\Order $order) {
-return view('site.order', ['$orders'=>$$order->active()->get()]);
-});
-Route::group(['namespace' => 'App\Http\Controllers'], function (){
-    Route::post('/order/store', 'OrderController@store')->name('order.store');
+Route::get('/', function (\App\Helpers\Telegram $telegram) {
+    $buttons = [
+        'inline_keyboard' => [
+            [
+                [
+                    'text' => 'button4',
+                    'callback_data' => '1'
+                ]
+            ],
+            [
+                [
+                    'text' => 'button3',
+                    'callback_data' => '3'
+                ]
+            ]
+
+        ]
+    ];
+
+    $sendMessage = $telegram->sendButton(818093929, 'test2', $buttons, 39);
+    $sendMessage = json_decode($sendMessage);
+    dd($sendMessage);
 });
