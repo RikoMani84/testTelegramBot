@@ -21,10 +21,11 @@ class Telegram
         ]);
     }
 
-    public function sendDocument($chat_id, $file){
-        return $this->http::attach('document',Storage::get('/public/photo.png'), 'document.png')
+    public function sendDocument($chat_id, $file, $reply_id=null){
+        return $this->http::attach('document',Storage::get('/public/'.$file), 'document.png')
         ->post('https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendDocument', [
-            'chat_id'=>$chat_id
+            'chat_id'=>$chat_id,
+            'reply_to_message_id'=>$reply_id
         ]);
     }
 }

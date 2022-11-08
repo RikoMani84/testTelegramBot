@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (\App\Helpers\Telegram $telegram) {
-    $telegram->sendDocument(818093929, 'photo.png');
+    $sendMessage = $telegram->sendMessage(818093929, 'test');
+    $sendMessage=json_decode($sendMessage);
+    $http = $telegram->sendDocument(818093929, 'photo.png', $sendMessage->result->message_id);
+    dd(json_decode($http->body()));
 });
