@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    \Illuminate\Support\Facades\Http::post("https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendMessage", [
+        'chat_id'=>818093929,
+        'text'=>"<b>Hello world</b>",
+        'parse_mode'=>'html'
+    ]);
 });
