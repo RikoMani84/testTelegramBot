@@ -1,2 +1,2 @@
-# [MyFirstTelegramBot](https://github.com/RikoMani84/testTelegramBot/tree/gh-page/testTelegramBot)
+# [MyFirstTelegramBot](https://github.com/RikoMani84/testTelegramBot/tree/firstTelegramBot/testTelegramBot)
  
