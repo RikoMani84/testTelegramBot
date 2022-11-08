@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\Telegram;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -49,11 +50,8 @@ class Handler extends ExceptionHandler
             'file'=>$e->getFile(),
             'line'=>$e->getLine(),
         ];
-        \Illuminate\Support\Facades\Http::post("https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendMessage", [
-            'chat_id'=>818093929,
-            'text'=>(string)view('report', $data),
-            'parse_mode'=>'html'
-        ]);
+        $telegram = new Telegram();
+        $telegram->sendMessage(818093929, (string)view('report', $data));
     }
 
     public function register()
