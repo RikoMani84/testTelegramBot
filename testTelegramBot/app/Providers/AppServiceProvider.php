@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
        $this->app->bind(Telegram::class, function ($app){
-           return new Telegram();
+           return new Telegram(new Http(), config('bots.bot'));
        });
     }
 
