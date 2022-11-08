@@ -41,6 +41,17 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
+
+    public function report(Throwable $e)
+    {
+        $message=$e->getMessage();
+        \Illuminate\Support\Facades\Http::post("https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendMessage", [
+            'chat_id'=>818093929,
+            'text'=>$message,
+            'parse_mode'=>'html'
+        ]);
+    }
+
     public function register()
     {
         $this->reportable(function (Throwable $e) {
