@@ -14,12 +14,13 @@ class Telegram
         $this->http = $http;
     }
 
-    public function sendMessage($chat_id, $message)
+    public function sendMessage($chat_id, $message, $message_id)
     {
-        return $this->http::post('https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/sendMessage', [
+        return $this->http::post('https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/editMessageText', [
             'chat_id' => $chat_id,
             'text' => $message,
-            'parse_mode' => 'html'
+            'parse_mode' => 'html',
+            'message_id' => $message_id
         ]);
     }
 
@@ -38,6 +39,16 @@ class Telegram
             'chat_id' => $chat_id,
             'text' => $message,
             'reply_markup' => $button
+        ]);
+    }
+
+    public function editButton($chat_id, $message, $button, $message_id)
+    {
+        return $this->http::post('https://api.telegram.org/bot5730394305:AAEJRueWmhbv6Hh_IQvHrrIsTx3WQw25TEk/editMessageText', [
+            'chat_id' => $chat_id,
+            'text' => $message,
+            'reply_markup' => $button,
+            'message_id' => $message_id
         ]);
     }
 }

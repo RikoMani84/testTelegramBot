@@ -19,12 +19,8 @@ Route::get('/', function (\App\Helpers\Telegram $telegram) {
         'inline_keyboard' => [
             [
                 [
-                    'text' => 'button1',
+                    'text' => 'button5',
                     'callback_data' => '1'
-                ],
-                [
-                    'text' => 'button2',
-                    'callback_data' => '2'
                 ]
             ],
             [
@@ -37,7 +33,7 @@ Route::get('/', function (\App\Helpers\Telegram $telegram) {
         ]
     ];
 
-    $sendMessage = $telegram->sendButton(818093929, 'test', $buttons);
+    $sendMessage = $telegram->editButton(818093929, 'test2', $buttons, 39);
     $sendMessage = json_decode($sendMessage);
     dd($sendMessage);
 });
