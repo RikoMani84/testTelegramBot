@@ -15,8 +15,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (\App\Helpers\Telegram $telegram) {
-    $sendMessage = $telegram->sendMessage(818093929, 'test');
-    $sendMessage=json_decode($sendMessage);
-    $http = $telegram->sendDocument(818093929, 'photo.png', $sendMessage->result->message_id);
-    dd(json_decode($http->body()));
+    $buttons = [
+        'inline_keyboard' => [
+            [
+                [
+                    'text' => 'button1',
+                    'callback_data' => '1'
+                ],
+                [
+                    'text' => 'button2',
+                    'callback_data' => '2'
+                ]
+            ],
+            [
+                [
+                    'text' => 'button3',
+                    'callback_data' => '3'
+                ]
+            ]
+
+        ]
+    ];
+
+    $sendMessage = $telegram->sendButton(818093929, 'test', $buttons);
+    $sendMessage = json_decode($sendMessage);
+    dd($sendMessage);
 });
